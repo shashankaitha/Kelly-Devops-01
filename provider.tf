@@ -11,6 +11,7 @@ terraform {
     }
   }
   backend "s3" {
+    # Create s3 bucket manually
     bucket = "terraformstatekelly"
     key    = "ansible.tfstate"
     region = "us-east-1"
