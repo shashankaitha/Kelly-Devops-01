@@ -18,7 +18,7 @@ resource "aws_instance" "webservers" {
     Terraform-Managed = "Yes"
     Env               = local.new_environment
     ProjectID         = local.projid
-    ManagedBy         = "Terraform"
+    ManagedBy         = "Terraform-"
   }
 }
 
