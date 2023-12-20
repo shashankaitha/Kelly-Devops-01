@@ -24,8 +24,9 @@
   become: yes
   tasks:
     - name: Copy files
-      src: /root/index.html
-      dest: /var/www/html/index.nginx-debian.html
-      owner: root
-      group: root
-      mode: "0644"
+      copy:
+        src: /root/index.html
+        dest: /var/www/html/index.nginx-debian.html
+        owner: root
+        group: root
+        mode: "0644"
