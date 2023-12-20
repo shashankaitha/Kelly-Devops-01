@@ -1,0 +1,19 @@
+---
+- name: Playbook to install nginx
+  hosts: pvt
+  gather_facts: yes
+  become: yes
+  become_user: root
+  tasks:
+    - name: Perform apt update and netstat tool and packages
+      shell: apt update && apt install -y unzip jq net-tools
+
+    - name: Install Nginx Webserver
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Start Nginx Service
+      service:
+        name: nginx
+        state: started
