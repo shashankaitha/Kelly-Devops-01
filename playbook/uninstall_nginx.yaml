@@ -1,6 +1,6 @@
 ---
 - name: Playbook to install nginx
-  hosts: pvt
+  hosts: testserver01
   gather_facts: yes
   become: yes
   become_user: root
