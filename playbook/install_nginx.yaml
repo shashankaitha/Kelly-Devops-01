@@ -34,8 +34,8 @@
         mode: "0644"
     - name: Copy files
       copy:
-        src: /root/style.c
-        dest: /var/www/html/style.cs
+        src: /root/style.css
+        dest: /var/www/html/style.css
         owner: root
         group: root
         mode: "0644"
