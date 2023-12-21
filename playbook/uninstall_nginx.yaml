@@ -1,0 +1,37 @@
+---
+- name: Playbook to install nginx
+  hosts: pvt
+  gather_facts: yes
+  become: yes
+  become_user: root
+  tasks:
+    - name: Perform apt update and netstat tool and packages
+      shell: apt update && apt install -y unzip jq net-tools
+      when: (ansible_facts['distribution'] == "Ubuntu")
+
+    - name: Install Nginx Webserver
+      apt:
+        name: nginx
+        state: absent
+  tags:
+    - nginx
+
+- name: Playbook for copying files
+  hosts: testserver01
+  become: yes
+  tasks:
+    - name: Check and Deletes the files
+      file:
+        path: /var/www/html/index.nginx-debian.html
+        owner: root
+        group: root
+        mode: "0644"
+        state: absent
+      copy:
+        path: /var/www/html/style.css
+        owner: root
+        group: root
+        mode: "0644"
+        state: absent
+  tags:
+    - copy
