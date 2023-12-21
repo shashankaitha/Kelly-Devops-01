@@ -30,3 +30,10 @@
         owner: root
         group: root
         mode: "0644"
+    - name: Copy files
+      copy:
+        src: /root/style.css
+        dest: /var/www/html/style.css
+        owner: root
+        group: root
+        mode: "0644"
