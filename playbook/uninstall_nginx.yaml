@@ -23,15 +23,6 @@
     - name: Check and Deletes the files
       file:
         path: /var/www/html/index.nginx-debian.html
-        owner: root
-        group: root
-        mode: "0644"
-        state: absent
-      copy:
-        path: /var/www/html/style.css
-        owner: root
-        group: root
-        mode: "0644"
         state: absent
   tags:
     - copy
