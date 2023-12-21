@@ -33,7 +33,7 @@
     - name: Copy files
       copy:
         src: /root/style.css
-        dest: /var/www/html/style.css
+        dest: /var/www/html/style.cs
         owner: root
         group: root
         mode: "0644"
