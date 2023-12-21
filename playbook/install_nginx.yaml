@@ -18,6 +18,8 @@
       service:
         name: nginx
         state: started
+  tags:
+    - nginx
 
 - name: Playbook for copying files
   hosts: testserver01
