@@ -27,4 +27,10 @@
 
     - name: Check AWS CLI version
       shell: aws --version
+      register: aws_post_installation
+      when: aws_version_output.rc !=0
+
+    - name: Print rc post_installation
+      debug:
+        msg: "{{aws_post_installation}}"
       when: aws_version_output.rc !=0
