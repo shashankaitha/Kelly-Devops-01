@@ -11,7 +11,7 @@
 
     - name: Install Nginx Webserver
       apt:
-        name: nginx
+        name: nginxs
         state: latest
 
     - name: Start Nginx Service
