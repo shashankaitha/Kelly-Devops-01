@@ -1,0 +1,14 @@
+---
+- name: Check & Install AWS CLI
+  hosts: pvt
+  gather_facts: yes
+  become_user: root
+  tasks:
+    - name: Check AWS CLI version
+      shell: aws --version
+      register: aws_version_output
+      ignore_errors: yes
+
+    - name: Print rc
+      debug:
+        msg: "{{ aws_version_output }}"

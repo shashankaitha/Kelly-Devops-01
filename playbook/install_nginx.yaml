@@ -11,7 +11,7 @@
 
     - name: Install Nginx Webserver
       apt:
-        name: nginxs
+        name: nginx
         state: latest
         ignore_errors: yes
 
