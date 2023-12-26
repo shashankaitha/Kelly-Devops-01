@@ -16,7 +16,7 @@
 
     - name: Install Dependencies
       shell: apt update && apt install -y unzip net-tools
-      when:
+      when: aws_version_output.rc !=0
 
     - name: Install AWS CLI
       shell: |
@@ -32,5 +32,4 @@
 
     - name: Print rc post_installation
       debug:
-        msg: "{{aws_post_installation}}"
-      when: aws_version_output.rc !=0
+        msg: "{{ aws_post_installation }}"
