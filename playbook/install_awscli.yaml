@@ -11,4 +11,4 @@
 
     - name: Print rc
       debug:
-        msg: "{{ aws_version_output }}"
+        msg: "{{ aws_version_output.rc }}"
