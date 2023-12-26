@@ -11,3 +11,8 @@
     - name: Print Variable
       debug:
         msg: Playbook with inv file {{ inventory_hostname }}Current AWS Account {{ AWS_ACCOUNT }}
+
+    - name: Print Variable with sensitive data
+      debug:
+        msg: Current AWS Account {{ AWS_ACCOUNT }}
+      no_log: True
