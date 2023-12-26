@@ -32,4 +32,4 @@
 
     - name: Print rc post_installation
       debug:
-        msg: "{{ aws_post_installation }}"
+        msg: "{{ aws_post_installation.rc}}"
