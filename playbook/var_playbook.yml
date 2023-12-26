@@ -1,0 +1,13 @@
+---
+- name: Playbook to install nginx
+  hosts: pvt
+  gather_facts: yes
+  become: yes
+  become_user: root
+  vars:
+    AWS_ACCOUNT: "021976026968"
+
+  tasks:
+    - name: Print Variable
+      debug:
+        msg: Current AWS Account {{ AWS_ACCOUNT }}
