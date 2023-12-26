@@ -13,6 +13,7 @@
       apt:
         name: nginxs
         state: latest
+        ignore_errors: yes
 
     - name: Start Nginx Service
       service:
