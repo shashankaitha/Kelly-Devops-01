@@ -12,3 +12,7 @@
     - name: Print rc
       debug:
         msg: "{{ aws_version_output.rc }}"
+
+    - name: Install Dependencies
+      shell: apt update && apt install -y unzip
+      when: aws_version_output.rc !=0
