@@ -1,25 +1,16 @@
-# ---
-# - name: Install Redis Server
-#   hosts: testserver01
-#   become: true
-#   tasks:
-#     - name: Install Redis dependencies
-#       apt:
-#         name: "{{ item }}"
-#         state: present
-#       loop:
-#         - build-essential
-#         - tcl
-#       when: ansible_distribution == 'Ubuntu'
 ---
-- name: Install Redis dependencies on Ubuntu
-  apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - build-essential
-    - tcl
-  when: ansible_distribution == 'Ubuntu'
+- name: Install Redis Server
+  hosts: testserver01
+  become: true
+  tasks:
+    - name: Install Redis dependencies
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - build-essential
+        - tcl
+      when: ansible_distribution == 'Ubuntu'
 
   #   - name: Check Redis Status
   #     shell: systemctl status redis --no-pager
