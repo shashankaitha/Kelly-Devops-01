@@ -6,6 +6,11 @@
   tasks:
     - name: Create users
       user:
-        name: johnd
-        uid: 1040
-        group: admin
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        group: "{{ item.groups }}"
+      with_items:
+        - { name: testuser1, uid: 2001, groups: "ubuntu" }
+        - { name: testuser2, uid: 2002, groups: "admin" }
+        - { name: testuser3, uid: 2003, groups: "users" }
+        - { name: testuser4, uid: 2004, groups: "ubuntu" }
