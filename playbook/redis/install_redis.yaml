@@ -1,8 +1,14 @@
 ---
 - name: Install Redis Server
-  hosts: testserver01
+  hosts: testserver02
   become: true
   tasks:
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+
     - name: Install Redis dependencies
       apt:
         name: "{{ item }}"
