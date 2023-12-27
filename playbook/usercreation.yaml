@@ -1,0 +1,11 @@
+---
+- name: Play for Creating multiple Users
+  hosts: pvt
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Create users
+      user:
+        name: johnd
+        uid: 1040
+        group: admin
