@@ -44,6 +44,8 @@ fact_caching_timeout = 86400
 fact_caching = redis
 fact_caching_prefix = ansible_b22_facts_
 fact_caching_connection = ansibleredis:6379:0
+-------------------------
+Setup in docker
 
 docker run --rm -dit  -p 6379:6379 --network ansible_nw --name ansibleredis redis
 
