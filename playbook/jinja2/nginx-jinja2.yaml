@@ -31,8 +31,8 @@
       service:
         name: nginx
         state: started
-  tags:
-    - nginx
+      tags:
+        - nginx
 
     - name: Copy Index.j2
       template: >
