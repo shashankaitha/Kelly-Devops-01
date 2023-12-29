@@ -34,39 +34,39 @@
   tags:
     - nginx
 
-- name: Copy Index.j2
-  template: >
-    src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/index.j2
-    dest= /var/www/html/index.nginx-debian.html
-    owner= root
-    group= root
-    mode= 0644
-  notify: Restart Nginx
-  tags:
-    - j2
+    - name: Copy Index.j2
+      template: >
+        src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/index.j2
+        dest= /var/www/html/index.nginx-debian.html
+        owner= root
+        group= root
+        mode= 0644
+      notify: Restart Nginx
+      tags:
+        - j2
 
-- name: Copy js files to destination
-  copy: >
-    src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/scorekeeper.js
-    dest= /var/www/html/scorekeeper.js
-    owner= root
-    group= root
-    mode= 0644
-  notify: Restart Nginx
-  tags:
-    - js
+    - name: Copy js files to destination
+      copy: >
+        src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/scorekeeper.js
+        dest= /var/www/html/scorekeeper.js
+        owner= root
+        group= root
+        mode= 0644
+      notify: Restart Nginx
+      tags:
+        - js
 
-- name: Copy js files to destination
-  copy: >
-    src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/style.css
-    dest= /var/www/html/style.css
-    owner= root
-    group= root
-    mode= 0644
-  notify: Restart Nginx
-  tags:
-    - css
+    - name: Copy js files to destination
+      copy: >
+        src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/style.css
+        dest= /var/www/html/style.css
+        owner= root
+        group= root
+        mode= 0644
+      notify: Restart Nginx
+      tags:
+        - css
 
-  handlers:
-    - name: Restart Nginx
-      command: service nginx restart
+      handlers:
+        - name: Restart Nginx
+          command: service nginx restart
