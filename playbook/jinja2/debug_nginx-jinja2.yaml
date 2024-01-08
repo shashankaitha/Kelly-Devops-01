@@ -1,0 +1,72 @@
+---
+- name: Playbook to install nginx
+  hosts: pvt
+  gather_facts: yes
+  become: yes
+  become_user: root
+  vars:
+    #Static variable
+    custom_heading: "welcome to kelly_Devops Ansible_course"
+    custom_para: "Practise of  Jinja"
+    aws_account: "021976026968"
+    friends: ["Shashank", "Swaroop", "Dwaraka"]
+    #Dynamic Variables
+    todays_date: "{{ ansible_facts['date_time']['date']}}"
+    hostname: "{{ ansible_facts['hostname'']}}"
+    fqdn_name: "{{ansible_facts['fqdn']}}"
+    ip_address: "{{ansible_facts['eth0']['ipv4']['address']}}"
+
+  tasks:
+    - name: Perform apt update and netstat tool and packages
+      shell: apt update && apt install -y unzip jq net-tools
+      when: (ansible_facts['distribution'] == "Ubuntu")
+
+    - name: Install Nginx Webserver
+      apt:
+        name: nginx
+        state: latest
+        ignore_errors: yes
+
+    - name: Start Nginx Service
+      service:
+        name: nginx
+        state: started
+      tags:
+        - nginx
+
+    - name: Copy Index.j2
+      template: >
+        src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/index.j2
+        dest= /var/www/html/index.nginx-debian.html
+        owner= root
+        group= root
+        mode= 0644
+      notify: Restart Nginx
+      tags:
+        - j2
+
+    - name: Copy js files to destination
+      copy: >
+        src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/scorekeeper.js
+        dest= /var/www/html/scorekeeper.js
+        owner= root
+        group= root
+        mode= 0644
+      notify: Restart Nginx
+      tags:
+        - js
+
+    - name: Copy js files to destination
+      copy: >
+        src= /home/ubuntu/kelly_ansible/Kelly-Devops-01/playbook/jinja2/style.css
+        dest= /var/www/html/style.css
+        owner= root
+        group= root
+        mode= 0644
+      notify: Restart Nginx
+      tags:
+        - css
+
+      handlers:
+        - name: Restart Nginx
+          command: service nginx restart
