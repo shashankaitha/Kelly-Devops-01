@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+WORKDIR /app
+
+COPY . /app
+
+# Neccessary packages installations
+RUN apt-get update && apt-get install -y python3 python3-pip
+
+ENV Name World
+
+# Run a command to start a application
+CMD ["python3","app.py"]
